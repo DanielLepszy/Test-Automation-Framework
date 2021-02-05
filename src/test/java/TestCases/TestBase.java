@@ -3,17 +3,18 @@ package TestCases;
 import Drivers.Browser;
 import Drivers.DriverFactory;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 
 public abstract class TestBase {
-    private WebDriver driver;
+    protected WebDriver driver;
 
-    protected WebDriver getDriver() {
-        if (driver == null)
-            openBrowser();
-        return driver;
-    }
+//    protected WebDriver getDriver() {
+//        if (driver == null)
+//            openBrowser();
+//        return driver;
+//    }
 
     @BeforeEach
     public void openBrowser() {
@@ -21,8 +22,8 @@ public abstract class TestBase {
         driver = driverFactory.initBrowser(Browser.Firefox);
     }
 
-    @AfterAll
-    public void tearDown() {
+    @AfterEach
+    public void tearDownSession() {
         driver.close();
     }
 }

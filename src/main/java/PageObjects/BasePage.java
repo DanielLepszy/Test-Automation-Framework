@@ -13,17 +13,5 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    private enum Page {
-        loginPage("https://www.saucedemo.com/"),
-        inventoryPage("https://www.saucedemo.com/inventory.html");
-        String url;
 
-        Page(String url) {
-            this.url = url;
-        }
-    }
-
-    protected void goTo(Page page) {
-        driver.get(page.url);
-    }
 }

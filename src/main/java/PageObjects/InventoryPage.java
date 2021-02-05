@@ -12,5 +12,10 @@ public class InventoryPage extends BasePage {
         this.header = new HeaderSection(driver);
     }
 
+    public LoginPage logoutUser(){
+        header.burgerButton.click();
+        header.logoutNav.click();
 
+        return new LoginPage(driver);
+    }
 }
