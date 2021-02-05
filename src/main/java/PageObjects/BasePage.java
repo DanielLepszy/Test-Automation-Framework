@@ -1,23 +1,29 @@
 package PageObjects;
 
-import Drivers.Browser;
-import Drivers.DriverFactory;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.WebDriver;
 
-public abstract class BasePage {
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+public class BasePage {
 
     protected WebDriver driver;
 
-    @BeforeEach
-    public void openBrowser(){
-        DriverFactory driverFactory = new DriverFactory();
-        driver = driverFactory.initBrowser(Browser.Firefox);
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
-    @AfterAll
-    public void tearDown(){
-        driver.close();
+    private enum Page {
+        loginPage("https://www.saucedemo.com/"),
+        inventoryPage("https://www.saucedemo.com/inventory.html");
+        String url;
+
+        Page(String url) {
+            this.url = url;
+        }
+    }
+
+    protected void goTo(Page page) {
+        driver.get(page.url);
     }
 }
