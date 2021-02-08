@@ -1,10 +1,11 @@
 package PageObjects;
 
+import HelperModels.ProductModel;
 import org.openqa.selenium.WebDriver;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class InventoryPage extends BasePage {
@@ -27,17 +28,22 @@ public class InventoryPage extends BasePage {
         header.logoutNav.click();
         return new LoginPage(driver);
     }
-    public Integer getAmountOfPurchasedProductsFromIcon(){
-        return Integer.parseInt(header.numbersOfAddedProducts.getText());
+
+    public Integer getAmountOfPurchasedProductsFromIcon() {
+        try {
+             return Integer.parseInt(header.numbersOfAddedProducts.getText());
+        } catch (Exception ex) {
+            return 0;
+        }
     }
 
-    public InventoryPage addProductToCart(Iterator<String> productsName) {
-        List<ProductCartPageModel> productCartModels = productsInventory.getProductsCartModel();
+    public InventoryPage addProductToCart(Iterator<ProductModel> productsName) {
+        List<ProductPageModel> productCartModels = productsInventory.getProductsCartModel();
 
         while (productsName.hasNext()) {
-
-            Optional<ProductCartPageModel> model = productCartModels.stream()
-                    .filter(product -> product.title.getText().equals(productsName.next()))
+            ProductModel productModel = productsName.next();
+            Optional<ProductPageModel> model = productCartModels.stream()
+                    .filter(product -> product.title.getText().trim().equals(productModel.name))
                     .findAny();
 
             model.ifPresent(productCartPageModel -> productCartPageModel.addOrRemoveButton.click());
@@ -45,4 +51,8 @@ public class InventoryPage extends BasePage {
         return new InventoryPage(driver);
     }
 
+    public CustomerCartPage openCustomerCart() {
+        header.shoppingContainerIcon.click();
+        return new CustomerCartPage(driver);
+    }
 }

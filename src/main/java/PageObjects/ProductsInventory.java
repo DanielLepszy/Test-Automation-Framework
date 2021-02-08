@@ -29,8 +29,8 @@ public class ProductsInventory extends BasePage {
     @CacheLookup
     public List<WebElement> productCartsElement;
 
-    public List<ProductCartPageModel> getProductsCartModel() {
-        List<ProductCartPageModel> productCartModels = new ArrayList<>();
+    public List<ProductPageModel> getProductsCartModel() {
+        List<ProductPageModel> productCartModels = new ArrayList<>();
         for (WebElement cart : productCartsElement) {
 
             WebElement productImage = cart.findElement(By.cssSelector(CSS_ProductImage));
@@ -39,7 +39,7 @@ public class ProductsInventory extends BasePage {
             WebElement addOrRemoveButton = cart.findElement(By.tagName(TagName_AddOrRemoveItemButton));
 
             productCartModels.add(
-                    new ProductCartPageModel(
+                    new ProductPageModel(
                             productTitle,
                             productPrice,
                             addOrRemoveButton,
@@ -52,9 +52,9 @@ public class ProductsInventory extends BasePage {
     }
 }
 
-class ProductCartPageModel {
+class ProductPageModel {
 
-    public ProductCartPageModel(WebElement titleElement, WebElement priceElement, WebElement addOrRemoveButton, WebElement productImage) {
+    public ProductPageModel(WebElement titleElement, WebElement priceElement, WebElement addOrRemoveButton, WebElement productImage) {
         this.title = titleElement;
         this.price = priceElement;
         this.addOrRemoveButton = addOrRemoveButton;
