@@ -59,8 +59,15 @@ public class LoginPage extends BasePage {
             usernameInput.sendKeys(credentials.username);
             passwordInput.sendKeys(credentials.password);
             loginButton.click();
-            validationMessages.add(validationMessageHeader.getText());
+
+            String message = validationMessageHeader.getText()
+                    .replace("Epic sadface:","")
+                    .replace(".","")
+                    .trim();
+
+            validationMessages.add(message);
         }
+
 
         return validationMessages;
     }

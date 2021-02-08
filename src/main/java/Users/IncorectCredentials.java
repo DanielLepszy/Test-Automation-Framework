@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum IncorectCredentials {
-    locked_user_credentials("locked_out_user","secret_sauce ","Sorry, this user has been locked out."),
+    locked_user_credentials("locked_out_user","secret_sauce","Sorry, this user has been locked out"),
     empty_username("","secret_sauce","Username is required"),
     empty_password("username","","Password is required"),
     empty_credentials("","","Username is required"),

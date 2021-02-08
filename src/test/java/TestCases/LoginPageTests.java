@@ -5,7 +5,10 @@ import Users.IncorectCredentials;
 import Users.User;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Array;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class LoginPageTests extends TestBase {
@@ -15,9 +18,12 @@ public class LoginPageTests extends TestBase {
     {
         LoginPage loginPage = new LoginPage(driver);
         List<String> messages = loginPage.navigateToPage().getInputValidationMessagesDuringWrongLoginProcess();
-        //TODO check why list is not equal
-        assert  messages == IncorectCredentials.getValidationMessage();
+        assertEquals(messages,IncorectCredentials.getValidationMessage());
+
+
     }
+
+
 
 //    @Test
 //    public void logoutUserFromTheApplicationTest()
