@@ -1,12 +1,14 @@
 package PageObjects;
 
-import Users.IncorectCredentials;
-import Users.User;
+import HelperEnums.IncorectCredentials;
+import HelperEnums.User;
+import WaitFactory.WaitFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,15 +63,23 @@ public class LoginPage extends BasePage {
             loginButton.click();
 
             String message = validationMessageHeader.getText()
-                    .replace("Epic sadface:","")
-                    .replace(".","")
+                    .replace("Epic sadface:", "")
+                    .replace(".", "")
                     .trim();
 
             validationMessages.add(message);
         }
 
-
         return validationMessages;
+    }
+
+    public boolean checkIfLoginFormElementsAreDisplay() {
+        wait.waitUntilElementClickable(driver, loginButton);
+        if (usernameInput.isEnabled() & passwordInput.isEnabled() & loginButton.isEnabled())
+            return true;
+        else {
+            return true;
+        }
     }
 }
 

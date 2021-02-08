@@ -10,7 +10,7 @@ public class HeaderSection extends BasePage {
     private static final String CSS_BurgerButton = "#menu_button_container .bm-burger-button button";
     private static final String ID_AllItemsNav = "inventory_sidebar_link";
     private static final String ID_AboutNav = "inventory_sidebar_link";
-    private static final String ID_LogoutNav = "inventory_sidebar_link";
+    private static final String ID_LogoutNav = "logout_sidebar_link";
     private static final String iD_ResetAppStateNav = "inventory_sidebar_link";
 
     public HeaderSection(WebDriver driver) {

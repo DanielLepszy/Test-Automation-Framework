@@ -3,10 +3,9 @@ package UnitTests;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class UnitTests {
 
@@ -20,7 +19,7 @@ public class UnitTests {
         yy2.add(1);
         yy2.add(2);
 
-        assertEquals(yy,yy2);
+        assertEquals(yy, yy2);
 
     }
 

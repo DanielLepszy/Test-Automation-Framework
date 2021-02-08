@@ -1,4 +1,4 @@
-package Users;
+package HelperEnums;
 
 public enum User {
     standard_user("secret_sauce"),

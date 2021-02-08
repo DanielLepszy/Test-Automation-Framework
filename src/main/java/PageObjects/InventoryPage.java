@@ -14,8 +14,8 @@ public class InventoryPage extends BasePage {
 
     public LoginPage logoutUser(){
         header.burgerButton.click();
+        wait.waitUntilElementClickable(driver,header.logoutNav);
         header.logoutNav.click();
-
         return new LoginPage(driver);
     }
 }

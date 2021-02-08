@@ -1,4 +1,4 @@
-package Users;
+package HelperEnums;
 
 import java.util.ArrayList;
 import java.util.List;
