@@ -1,4 +1,4 @@
-package HelperEnums;
+package HelperModels;
 
 import java.util.ArrayList;
 import java.util.List;

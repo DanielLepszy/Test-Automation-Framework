@@ -1,4 +1,4 @@
-package HelperEnums;
+package HelperModels;
 
 public enum User {
     standard_user("secret_sauce"),

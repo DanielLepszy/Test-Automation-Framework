@@ -12,10 +12,14 @@ public class HeaderSection extends BasePage {
     private static final String ID_AboutNav = "inventory_sidebar_link";
     private static final String ID_LogoutNav = "logout_sidebar_link";
     private static final String iD_ResetAppStateNav = "inventory_sidebar_link";
+    private static final String CSS_NumbersOfAddedProducts = ".shopping_cart_badge";
 
     public HeaderSection(WebDriver driver) {
         super(driver);
     }
+
+    @FindBy(css = CSS_NumbersOfAddedProducts)
+    public WebElement numbersOfAddedProducts;
 
     @FindBy(id = ID_AllItemsNav)
     public WebElement allItemsNav;
