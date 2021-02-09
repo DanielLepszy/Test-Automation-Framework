@@ -5,6 +5,7 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
 
@@ -17,6 +18,8 @@ public class DriverFactory {
                 return getChromeDriver();
             case Firefox:
                 return getFirefoxBrowser();
+            case Edge:
+                return getEdgeBrowser();
 
             default:
                 throw new IllegalArgumentException("Provider browser doesn't exist");
@@ -24,8 +27,8 @@ public class DriverFactory {
     }
 
     private WebDriver getFirefoxBrowser() {
-//        WebDriverManager.firefoxdriver().setup();
-        System.setProperty("webdriver.gecko.driver","C:/Users/Daniel_Lepszy/Tools/Drivers/geckodriver.exe");
+        WebDriverManager.firefoxdriver().setup();
+//        System.setProperty("webdriver.gecko.driver","C:/Users/Daniel_Lepszy/Tools/Drivers/geckodriver.exe");
 
         return new FirefoxDriver();
     }
@@ -34,6 +37,12 @@ public class DriverFactory {
         WebDriverManager.chromedriver().setup();
         return new ChromeDriver();
 
+    }
+
+    private WebDriver getEdgeBrowser() {
+        WebDriverManager.edgedriver().setup();
+
+        return new EdgeDriver();
     }
 
 }
