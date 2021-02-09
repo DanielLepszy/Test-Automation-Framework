@@ -24,7 +24,9 @@ public class DriverFactory {
     }
 
     private WebDriver getFirefoxBrowser() {
-        WebDriverManager.firefoxdriver().setup();
+//        WebDriverManager.firefoxdriver().setup();
+        System.setProperty("webdriver.gecko.driver","C:/Users/Daniel_Lepszy/Tools/Drivers/geckodriver.exe");
+
         return new FirefoxDriver();
     }
 

@@ -47,7 +47,7 @@ public class InventoryPageTests extends TestBase {
     public void removeTwoProductsAndCheckNumberOfProductInTrolleyIcon()
     {
         LoginPage loginPage = new LoginPage(driver);
-        InventoryPage inventoryPage = loginPage.navigateToPage().logInTo(User.standard_user).addOrRemoveProducts(products);
+        InventoryPage inventoryPage = new InventoryPage(driver);
         inventoryPage.addOrRemoveProducts(products);
         Integer purchasedProducts = inventoryPage.header.getAmountOfPurchasedProductsFromIcon();
 

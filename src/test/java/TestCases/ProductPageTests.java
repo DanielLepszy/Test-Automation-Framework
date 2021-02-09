@@ -32,7 +32,6 @@ public class ProductPageTests extends TestBase {
     {
         LoginPage loginPage = new LoginPage(driver);
         ProductPage productPage = loginPage.navigateToPage().logInTo(User.standard_user).openProduct(product).addOrRemoveProduct(product);
-        productPage.addOrRemoveProduct(product);
 
         assertEquals(productPage.header.getAmountOfPurchasedProductsFromIcon(),0);
     }
