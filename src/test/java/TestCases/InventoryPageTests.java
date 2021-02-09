@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class InventoryPageTests extends TestBase {
 
-    public List<ProductModel> productsToAdd = new ArrayList<>(Arrays.asList(
+    public List<ProductModel> products = new ArrayList<>(Arrays.asList(
             new ProductModel("Sauce Labs Backpack", 29.99),
             new ProductModel("Sauce Labs Bolt T-Shirt", 15.99)));
 
@@ -25,23 +25,33 @@ public class InventoryPageTests extends TestBase {
     @Order(1)
     public void checkIfProductImageShowUpOnPage()
     {
-
         LoginPage loginPage = new LoginPage(driver);
         InventoryPage inventoryPage = loginPage.navigateToPage().logInTo(User.standard_user);
 
         assertTrue(inventoryPage.checkIfAllProductImagesAreVisibility());
     }
 
-
     @Test
     @Order(2)
     public void addTwoProductToCartAndCheckNumberOfProductInTrolleyIcon()
     {
         LoginPage loginPage = new LoginPage(driver);
-        InventoryPage inventoryPage = loginPage.navigateToPage().logInTo(User.standard_user).addProductToCart(productsToAdd.iterator());
+        InventoryPage inventoryPage = loginPage.navigateToPage().logInTo(User.standard_user).addOrRemoveProducts(products);
         Integer purchasedProducts = inventoryPage.header.getAmountOfPurchasedProductsFromIcon();
 
         assertEquals(purchasedProducts,2);
+    }
+
+    @Test
+    @Order(3)
+    public void removeTwoProductsAndCheckNumberOfProductInTrolleyIcon()
+    {
+        LoginPage loginPage = new LoginPage(driver);
+        InventoryPage inventoryPage = loginPage.navigateToPage().logInTo(User.standard_user).addOrRemoveProducts(products);
+        inventoryPage.addOrRemoveProducts(products);
+        Integer purchasedProducts = inventoryPage.header.getAmountOfPurchasedProductsFromIcon();
+
+        assertEquals(purchasedProducts,0);
     }
 
 }

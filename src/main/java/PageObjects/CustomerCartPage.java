@@ -60,20 +60,18 @@ public class CustomerCartPage extends BasePage {
         return productsList;
     }
 
-    public List<ProductPageModel> findNumberOfAddedProductFromCustomerCart(Iterator<ProductModel> products) {
+    public List<ProductPageModel> findNumberOfAddedProductFromCustomerCart(List<ProductModel> products) {
 
-        List<ProductPageModel> productCartModels = getAllAddedProductsFromCustomerCart();
+        List<ProductPageModel> productPageModel = getAllAddedProductsFromCustomerCart();
         List<ProductPageModel> foundProductsModel = new ArrayList<>();
 
-        while (products.hasNext()) {
-            ProductModel productModel = products.next();
-
-            foundProductsModel = productCartModels.stream()
-                    .filter(product ->
-                            (product.title.getText().equals(productModel.name))
-                                    && Double.parseDouble(product.price.getText().trim()) == productModel.price
-                    )
-                    .collect(Collectors.toList());
+        for (ProductModel productModel:products)
+        {
+            foundProductsModel.add(productPageModel.stream()
+                    .filter(pageModel->
+                        pageModel.title.getText().equals(productModel.name)
+                        && Double.parseDouble(pageModel.price.getText())==productModel.price)
+                    .collect(Collectors.toList()).get(0));
         }
         return foundProductsModel;
 

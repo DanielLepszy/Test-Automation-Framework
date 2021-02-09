@@ -15,7 +15,7 @@ public class ProductPage extends BasePage {
         this.header = new HeaderSection(driver);
     }
 
-    static final String CSS_AddToCartButton = ".btn_primary";
+    static final String CSS_AddToCartButton = ".btn_inventory";
     static final String CSS_productPrice = ".inventory_details_price";
     static final String CSS_productName = ".inventory_details_name";
     static final String CSS_productImage = ".inventory_details_img";
@@ -45,14 +45,12 @@ public class ProductPage extends BasePage {
     public Boolean checkIfProperProductModelIsOnThePage(ProductModel productModel)
     {
         ProductPageModel productPageModel = getProductModelFromPage();
-        if(productPageModel.title.getText().equals(productModel.name) &&
-                Double.parseDouble(productPageModel.price.getText())==productModel.price)
-        {
-            return true;
-        }
-        else return false;
+        Double price = Double.parseDouble(productPageModel.price.getText().replace("$","").trim());
+        String title = productPageModel.title.getText();
+
+        return title.equals(productModel.name) && price == productModel.price;
     }
-    public ProductPage addProductToCart(ProductModel productModel) {
+    public ProductPage addOrRemoveProduct(ProductModel productModel) {
 
         if(checkIfProperProductModelIsOnThePage(productModel))
         {

@@ -3,13 +3,9 @@ package PageObjects;
 import HelperModels.ProductModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.Iterator;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -41,16 +37,16 @@ public class InventoryPage extends BasePage {
 
 
 
-    public InventoryPage addProductToCart(Iterator<ProductModel> productsName) {
+    public InventoryPage addOrRemoveProducts(List<ProductModel> productsModel) {
         List<ProductPageModel> productCartModels = productsInventory.getProductsCartModel();
 
-        while (productsName.hasNext()) {
-            ProductModel productModel = productsName.next();
-            Optional<ProductPageModel> model = productCartModels.stream()
-                    .filter(product -> product.title.getText().trim().equals(productModel.name))
-                    .findAny();
+        for(ProductModel productModel: productsModel){
 
-            model.ifPresent(productCartPageModel -> productCartPageModel.addOrRemoveButton.click());
+            ProductPageModel model = productCartModels.stream()
+                    .filter(productPageModel -> productPageModel.title.getText().trim().equals(productModel.name))
+                    .collect(Collectors.toList()).get(0);
+
+             model.addOrRemoveButton.click();
         }
         return new InventoryPage(driver);
     }
