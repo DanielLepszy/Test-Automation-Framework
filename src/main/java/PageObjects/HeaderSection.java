@@ -39,4 +39,12 @@ public class HeaderSection extends BasePage {
     @FindBy(css = CSS_BurgerButton)
     public WebElement burgerButton;
 
+    public Integer getAmountOfPurchasedProductsFromIcon() {
+        try {
+            return Integer.parseInt(numbersOfAddedProducts.getText());
+        } catch (Exception ex) {
+            return 0;
+        }
+    }
+
 }

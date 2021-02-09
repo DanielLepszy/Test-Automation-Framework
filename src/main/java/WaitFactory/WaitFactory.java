@@ -4,13 +4,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.*;
+
+import java.sql.SQLOutput;
 import java.time.Duration;
+import java.util.List;
 
 
 public class WaitFactory {
 
     WebDriver driver;
-    Duration timeInSec = Duration.ofSeconds(5);
+    Duration timeInSec = Duration.ofSeconds(3);
 
     public WaitFactory(WebDriver driver) {
         this.driver = driver;
@@ -31,4 +34,6 @@ public class WaitFactory {
         WebDriverWait wait = new WebDriverWait(drv, timeInSec);
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
+
+
 }

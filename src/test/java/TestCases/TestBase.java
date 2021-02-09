@@ -21,6 +21,7 @@ public abstract class TestBase {
         driver = driverFactory.initBrowser(Browser.Firefox);
     }
 
+
     @AfterAll
     static void tearDownSession() {
         driver.close();
