@@ -8,7 +8,10 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
-
+configurations {
+    localDeps
+    localDeps.transitive = false
+}
 dependencies {
     implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
@@ -17,8 +20,15 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.0.0-alpha-7'
+
     // https://mvnrepository.com/artifact/org.assertj/assertj-core
     testCompile group: 'org.assertj', name: 'assertj-core', version: '3.19.0'
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver
+    localDeps group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '4.0.0-alpha-7'
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver
+    localDeps group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '4.0.0-alpha-7'
 
 
 }
@@ -26,3 +36,11 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+task copyDependencies(type: Copy) {
+    from configurations.localDeps
+    into "$rootDir/src/main/resources"
+}
+task startWebDriverGridNode(type: Exec) {
+    commandLine 'startHub.sh','&'
+}
+

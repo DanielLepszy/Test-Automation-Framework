@@ -20,7 +20,7 @@ public abstract class TestBase {
     @BeforeAll
     static void openBrowser() throws MalformedURLException {
         DriverFactory driverFactory = new DriverFactory();
-        driver = driverFactory.initBrowser(RunningTypes.Local,Browser.Firefox);
+        driver = driverFactory.initBrowser(RunningTypes.Remote,Browser.Chrome);
     }
 
 

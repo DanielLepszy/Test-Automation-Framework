@@ -69,7 +69,7 @@ public class DriverFactory {
     }
 
     private WebDriver getRemoteChromeDriver() throws MalformedURLException {
-        System.setProperty("webdriver.gecko.driver", "./chromedriver.exe");
+//        System.setProperty("webdriver.gecko.driver", "./chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
 
         options.setCapability(CapabilityType.PLATFORM, Platform.WINDOWS);
@@ -87,7 +87,7 @@ public class DriverFactory {
     }
 
     private WebDriver getLocalFirefoxBrowser() {
-        WebDriverManager.firefoxdriver().setup();
+//        WebDriverManager.firefoxdriver().setup();
 
         return new FirefoxDriver();
     }
