@@ -1,0 +1,42 @@
+{
+  "capabilities": [
+    {
+     "browserName": "firefox",
+     "moz:firefoxOptions": {
+        "args":[],
+        "prefs": []
+        },
+     "version": "85.0",
+     "platform": "WINDOWS",
+     "maxInstances": 5,
+     "acceptInsecureCerts": true,
+     "seleniumProtocol":"WebDriver"
+    },
+    {
+     "acceptInsecureCerts": true,
+     "browserName": "chrome",
+     "version": "88.0",
+     "maxInstances": 3,
+     "goog:chromeOptions": {
+           "args": [],
+           "extensions": []
+     },
+     "platform": "WINDOWS",
+     "seleniumProtocol":"WebDriver"
+    }
+  ],
+    "maxSession": 5,
+    "port": 5555,
+    "register": true,
+    "registerCycle": 5000,
+    "hub": "http://localhost:4444",
+    "nodeStatusCheckTimeout": 5000,
+    "nodePolling": 5000,
+    "role": "node",
+    "unregisterIfStillDownAfter": 60000,
+    "downPollingLimit": 2,
+    "debug": true,
+    "servlets" : [],
+    "withoutServlets": [],
+    "custom": {}
+}
