@@ -1,6 +1,5 @@
-echo "WebDriver Grid Hub on 4444"
+echo 'WebDriver Grid Hub on 4444'
 echo ""
-
 echo "*********************************************"
 echo "*"
 echo "* WebDriver grid Hub instance."
@@ -10,13 +9,8 @@ echo "*"
 echo "*********************************************"
 echo ""
 
-jarfile=selenium-server-standalone-3.141.59.jar
+jarfile='selenium-server-standalone-3.141.59.jar'
+cd ./griDConfigFiles
 
-#export run_directory=./Test-Automation-Framework
-cd ./src/main/resources
+java -jar $jarfile -role hub -hubConfig hubConfig.json -debug
 
-#nohup
-
-java -jar $jarfile -role hub
-
-echo 'Done'

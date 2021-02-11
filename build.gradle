@@ -29,18 +29,28 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver
     localDeps group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '4.0.0-alpha-7'
-
-
 }
 
 test {
+    systemProperty 'BROWSER', BROWSER
+    systemProperty 'RUNNING_TYPE', RUNNING_TYPE
+
     useJUnitPlatform()
 }
+
 task copyDependencies(type: Copy) {
     from configurations.localDeps
-    into "$rootDir/src/main/resources"
+    into "$rootDir/gridConfigFiles"
 }
-task startWebDriverGridNode(type: Exec) {
-    commandLine 'startHub.sh','&'
+task startHub(type: Exec) {
+    commandLine 'cmd', '/c',' startHub.sh', '&'
+
 }
+
+task startNode(type: Exec) {
+    commandLine 'cmd', '/c',' startNode.sh', '&'
+}
+
+
+
 

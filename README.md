@@ -21,10 +21,31 @@ Project is created with:
 * Gradle 
 
 ## Setup
-There is two option to run this project: install it locally using npm:
 
-```
-$ cd ../lorem
-$ npm install
-$ npm start
-```
+### To run tests suites locally:
+Use gradle task in cmd:
+
+- #### Run suites test in firefox:
+      $ gradle test -PBROWSER=BROWSER -PRUNNING_TYPE=RUNNING_TYPE
+
+  > **where**:
+  > * BROWSER ( firefox / chrome / edge )
+  > * RUNNING_TYPE ( local / remote )
+
+### To run tests suites remotely:
+
+Before running, download selenium server .jar file in desire version and place to ***gridConfigFiles*** folder.
+Currently, the project contains selenium-server-standalone-3.141.59.jar file.
+
+- #### Start the hub distribution with specified configurations by execute gradle task in cmd:
+       $ gradle startHub
+
+  To add or edit hub configurations go to ***hubCondig.json*** file.
+  
+- #### Start grid nodes with configurations by execute gradle task in cmd:
+      $ gradle copyDependencies startNode 
+  All nodes configurations are placed in ***nodeConfig.json*** file.
+
+- #### Run test suite:
+      $ gradle test -PBROWSER=BROWSER -PRUNNING_TYPE=RUNNING_TYPE
+
