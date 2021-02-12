@@ -2,26 +2,19 @@ package Drivers;
 
 import org.openqa.selenium.Platform;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Properties;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public interface SystemPropertyReader {
 
     default String readProperty(String property) throws IOException {
-        File f = new File("aa.properties");
-
-        // Get all the names of the files present
-        // in the given directory
-        String files = f.getPath();
-        FileReader reader = new FileReader(f);
-
+        String fileName = "browser.properties";
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(Objects.requireNonNull(classLoader.getResource(fileName)).getFile());
+        FileReader reader = new FileReader(file);
         Properties p = new Properties();
         p.load(reader);
 
