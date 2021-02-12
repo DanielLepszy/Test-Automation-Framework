@@ -1,11 +1,12 @@
 package PageObjects;
 
 
+import Readers.PropertyReader;
 import WaitFactory.WaitFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class BasePage  {
+public class BasePage implements PropertyReader {
 
     protected WebDriver driver;
     protected WaitFactory wait;

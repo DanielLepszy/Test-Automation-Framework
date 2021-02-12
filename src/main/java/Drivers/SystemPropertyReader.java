@@ -1,25 +1,12 @@
 package Drivers;
 
+import Readers.PropertyReader;
 import org.openqa.selenium.Platform;
-
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public interface SystemPropertyReader {
-
-    default String readProperty(String property) throws IOException {
-        String fileName = "browser.properties";
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(Objects.requireNonNull(classLoader.getResource(fileName)).getFile());
-        FileReader reader = new FileReader(file);
-        Properties p = new Properties();
-        p.load(reader);
-
-        return p.getProperty(property);
-    }
+public interface SystemPropertyReader extends PropertyReader {
 
     default Browser chosenBrowser() throws IOException {
         String browserType = readProperty("BROWSER").toUpperCase();

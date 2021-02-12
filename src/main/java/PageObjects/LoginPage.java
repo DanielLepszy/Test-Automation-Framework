@@ -6,17 +6,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoginPage extends BasePage {
 
     WebDriver driver;
-    String url = "https://www.saucedemo.com/";
+    String url;
 
-    public LoginPage(WebDriver driver) {
+    public LoginPage(WebDriver driver){
         super(driver);
         this.driver = driver;
+        this.url = readProperty("baseURL");
     }
 
     private static final String ID_InputUsername = "user-name";

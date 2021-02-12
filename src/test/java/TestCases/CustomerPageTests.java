@@ -1,19 +1,10 @@
 package TestCases;
 
 import HelperModels.ProductModel;
-import HelperModels.User;
-import PageObjects.CustomerCartPage;
-import PageObjects.InventoryPage;
-import PageObjects.LoginPage;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CustomerPageTests extends TestBase{
     public List<ProductModel> products = new ArrayList<>(Arrays.asList(
