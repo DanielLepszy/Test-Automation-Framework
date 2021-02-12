@@ -70,23 +70,20 @@ public class DriverFactory implements SystemPropertyReader {
         options.setBinary("C:/Program Files/Mozilla Firefox/firefox.exe");
         options.setCapability(CapabilityType.PLATFORM, getPlatformFromSystem());
         options.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);
-        options.setCapability(CapabilityType.VERSION, "85.0");
-
-//        options.setCapability(CapabilityType.VERSION, getBrowserVersionFromSystem());
+        options.setCapability(CapabilityType.VERSION, getBrowserVersionFromSystem());
 
         return new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
     }
 
-    private WebDriver getRemoteChromeDriver() throws MalformedURLException {
-//        System.setProperty("webdriver.gecko.driver", "./chromedriver.exe");
+    private WebDriver getRemoteChromeDriver() throws IOException {
+        System.setProperty("webdriver.gecko.driver", "./chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
 
-        options.setCapability(CapabilityType.PLATFORM, Platform.WINDOWS);
+        options.setCapability(CapabilityType.PLATFORM, getPlatformFromSystem());
         options.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
-        options.setCapability(CapabilityType.VERSION, "88.0");
+        options.setCapability(CapabilityType.VERSION, getBrowserVersionFromSystem());
 
-//        options.setCapability(CapabilityType.PLATFORM, getPlatformFromSystem());
-//        options.setCapability(CapabilityType.VERSION, getBrowserVersionFromSystem());
+
 
         return new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
 
