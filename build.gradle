@@ -32,8 +32,10 @@ dependencies {
 }
 
 test {
-    systemProperty 'BROWSER', BROWSER
-    systemProperty 'RUNNING_TYPE', RUNNING_TYPE
+    systemProperty 'BROWSER',project.getProperties().get("BROWSER")
+    systemProperty 'RUNNING_TYPE',project.getProperties().get("RUNNING_TYPE")
+//    systemProperty 'VERSION'
+//    systemProperty 'PLATFORM'
 
     useJUnitPlatform()
 }

@@ -12,12 +12,18 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class DriverFactory {
+public class DriverFactory implements SystemPropertyReader {
 
-    public WebDriver initBrowser(RunningTypes runningTypes, Browser browserType) throws MalformedURLException {
+
+    public WebDriver initSession() throws IOException {
+        return initBrowser(chosenRunningProcess(),chosenBrowser());
+    }
+
+    public WebDriver initBrowser(RunningTypes runningTypes, Browser browserType) throws IOException {
         switch (runningTypes) {
             case Local:
                 return initBrowserLocally(browserType);
@@ -29,7 +35,7 @@ public class DriverFactory {
         }
     }
 
-    public WebDriver initBrowserLocally(Browser browserType) throws MalformedURLException {
+    public WebDriver initBrowserLocally(Browser browserType) {
 
         switch (browserType) {
             case Chrome:
@@ -44,7 +50,7 @@ public class DriverFactory {
         }
     }
 
-    public WebDriver initBrowserRemotely(Browser browserType) throws MalformedURLException {
+    public WebDriver initBrowserRemotely(Browser browserType) throws IOException {
 
         switch (browserType) {
             case Chrome:
@@ -56,14 +62,17 @@ public class DriverFactory {
         }
     }
 
-    private WebDriver getRemoteFirefoxBrowser() throws MalformedURLException {
+    private WebDriver getRemoteFirefoxBrowser() throws IOException {
         System.setProperty("webdriver.gecko.driver", "./geckodriver.exe");
+
 
         FirefoxOptions options = new FirefoxOptions();
         options.setBinary("C:/Program Files/Mozilla Firefox/firefox.exe");
-        options.setCapability(CapabilityType.PLATFORM, Platform.WINDOWS);
+        options.setCapability(CapabilityType.PLATFORM, getPlatformFromSystem());
         options.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);
         options.setCapability(CapabilityType.VERSION, "85.0");
+
+//        options.setCapability(CapabilityType.VERSION, getBrowserVersionFromSystem());
 
         return new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
     }
@@ -76,6 +85,9 @@ public class DriverFactory {
         options.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
         options.setCapability(CapabilityType.VERSION, "88.0");
 
+//        options.setCapability(CapabilityType.PLATFORM, getPlatformFromSystem());
+//        options.setCapability(CapabilityType.VERSION, getBrowserVersionFromSystem());
+
         return new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
 
     }
@@ -87,7 +99,7 @@ public class DriverFactory {
     }
 
     private WebDriver getLocalFirefoxBrowser() {
-//        WebDriverManager.firefoxdriver().setup();
+        WebDriverManager.firefoxdriver().setup();
 
         return new FirefoxDriver();
     }
