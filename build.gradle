@@ -34,8 +34,8 @@ dependencies {
 test {
     systemProperty 'BROWSER',project.getProperties().get("BROWSER")
     systemProperty 'RUNNING_TYPE',project.getProperties().get("RUNNING_TYPE")
-//    systemProperty 'VERSION'
-//    systemProperty 'PLATFORM'
+    systemProperty 'VERSION',project.getProperties().get("VERSION")
+    systemProperty 'PLATFORM',project.getProperties().get("PLATFORM")
 
     useJUnitPlatform()
 }
@@ -46,12 +46,13 @@ task copyDependencies(type: Copy) {
 }
 task startHub(type: Exec) {
     commandLine 'cmd', '/c',' startHub.sh', '&'
-
 }
 
 task startNode(type: Exec) {
     commandLine 'cmd', '/c',' startNode.sh', '&'
 }
+
+
 
 
 

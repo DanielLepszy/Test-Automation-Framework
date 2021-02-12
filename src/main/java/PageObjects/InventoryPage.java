@@ -35,8 +35,6 @@ public class InventoryPage extends BasePage {
         return new LoginPage(driver);
     }
 
-
-
     public InventoryPage addOrRemoveProducts(List<ProductModel> productsModel) {
         List<ProductPageModel> productCartModels = productsInventory.getProductsCartModel();
 
