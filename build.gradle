@@ -12,7 +12,7 @@ configurations {
     localDeps
     localDeps.transitive = false
 }
-sourceSets{
+sourceSets {
     src {
         java {
             srcDirs "src/main/java"
@@ -21,8 +21,8 @@ sourceSets{
             srcDirs("src/main/resources")
         }
     }
-    test{
-        java{
+    test {
+        java {
             srcDirs "src/test/java"
         }
         resources {
@@ -66,22 +66,10 @@ task startHub(type: Exec) {
     commandLine 'cmd', '/c', ' startHub.sh', '&'
 }
 
-task startNode(type: Exec)  {
+task startNode(type: Exec) {
     commandLine 'cmd', '/c', ' startNode.sh', '&'
 }
 
-//TODO How to run script if another script work in background
-task doIt(type: Exec) {
-    commandLine 'cmd', '/c', ' startHub.sh', '&'
-    dependsOn tasks.startHub
-        commandLine 'cmd', '/c', ' startNode.sh', '&'
-
-}
-//TODO Puscic jeden w tle a drugi w petli if nasluhujac czy hub juz stoi
-//TODO Jak wyhostowac localhosta ?
-task doIst(dependsOn: [startHub, startNode]) {
-    println 'running unit tests'
-}
 
 
 
