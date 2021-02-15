@@ -12,6 +12,24 @@ configurations {
     localDeps
     localDeps.transitive = false
 }
+sourceSets{
+    src {
+        java {
+            srcDirs "src/main/java"
+        }
+        resources {
+            srcDirs("src/main/resources")
+        }
+    }
+    test{
+        java{
+            srcDirs "src/test/java"
+        }
+        resources {
+            srcDirs("src/test/resources")
+        }
+    }
+}
 dependencies {
     implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
