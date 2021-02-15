@@ -52,24 +52,15 @@ task startNode(type: Exec)  {
     commandLine 'cmd', '/c', ' startNode.sh', '&'
 }
 
-//task beta {
-//    println 'Hello from beta'
-//}
-//
-//task alpha {
-//    println "Hello from alpha"
-//}
-//task done{
-//    alpha.dependsOn beta
-//    alpha.finalizedBy beta
-//}
-//TODO How to run script if another work in background
+//TODO How to run script if another script work in background
 task doIt(type: Exec) {
-//    commandLine 'cmd', '/c', ' startHub.sh', '&'
+    commandLine 'cmd', '/c', ' startHub.sh', '&'
     dependsOn tasks.startHub
         commandLine 'cmd', '/c', ' startNode.sh', '&'
 
 }
+//TODO Puscic jeden w tle a drugi w petli if nasluhujac czy hub juz stoi
+//TODO Jak wyhostowac localhosta ?
 task doIst(dependsOn: [startHub, startNode]) {
     println 'running unit tests'
 }
