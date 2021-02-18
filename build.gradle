@@ -63,11 +63,22 @@ task copyDependencies(type: Copy) {
     into "$rootDir/gridConfigFiles"
 }
 task startHub(type: Exec) {
-    commandLine 'cmd', '/c', ' startHub.ps1', '&'
+    commandLine 'cmd', '/c', 'Powershell -File startHub.ps1', '&'
 }
 
-task startNode(type: Exec) {
-    commandLine 'cmd', '/c', ' startNode1.ps1', '&'
+//task startNode(type: Exec) {
+//    commandLine 'cmd', '/c', project.getProperties().get("NODE_FILE_NAME"), '&'
+//}
+task startGrid(type: Exec) {
+    commandLine 'cmd', '/c', 'Powershell -File runGrid.ps1', '&'
+}
+task tearDownGrid(type: Exec){
+    commandLine 'cmd', '/c', 'Powershell -File tearDownGrid.ps1', '&'
+}
+
+task prin(type: Exec){
+//    systemProperty 'NODE', System.getProperties().get("NODE")
+    print('args()')
 }
 
 
