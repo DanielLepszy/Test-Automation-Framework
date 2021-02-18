@@ -1,9 +1,16 @@
 package TestCases;
 
 import Drivers.DriverFactory;
+import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.Augmenter;
+
+import java.io.File;
+import java.io.IOException;
 
 public abstract class TestBase {
     protected static WebDriver driver;
@@ -17,5 +24,18 @@ public abstract class TestBase {
     @AfterAll
     static void tearDownSession() {
         driver.close();
+    }
+
+    //TakeScreenShot
+    public void takeScreenShot () {
+        driver = new Augmenter().augment(driver);
+        File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        String screenshotName = getClass().getSimpleName();
+        System.out.println("ScreenShotName: " + screenshotName);
+        try {
+            FileUtils.copyFile(srcFile, new File("screenshotName.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -63,11 +63,11 @@ task copyDependencies(type: Copy) {
     into "$rootDir/gridConfigFiles"
 }
 task startHub(type: Exec) {
-    commandLine 'cmd', '/c', ' startHub.sh', '&'
+    commandLine 'cmd', '/c', ' startHub.ps1', '&'
 }
 
 task startNode(type: Exec) {
-    commandLine 'cmd', '/c', ' startNode.sh', '&'
+    commandLine 'cmd', '/c', ' startNode1.ps1', '&'
 }
 
 
