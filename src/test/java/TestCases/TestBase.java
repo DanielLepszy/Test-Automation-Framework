@@ -4,6 +4,9 @@ import Drivers.DriverFactory;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.parallel.ResourceAccessMode;
+import org.junit.jupiter.api.parallel.ResourceLock;
+import org.junit.jupiter.api.parallel.Resources;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +29,7 @@ public abstract class TestBase {
         driver.close();
     }
 
-    //TakeScreenShot
+    //TODO TakeScreenShot
     public void takeScreenShot () {
         driver = new Augmenter().augment(driver);
         File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);

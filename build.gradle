@@ -66,9 +66,12 @@ task startHub(type: Exec) {
     commandLine 'cmd', '/c', 'Powershell -File startHub.ps1', '&'
 }
 
-//task startNode(type: Exec) {
-//    commandLine 'cmd', '/c', project.getProperties().get("NODE_FILE_NAME"), '&'
-//}
+task startNode(type: Exec) {
+    if (!project.hasProperty("node")) {
+        ext.node = "startNode1.ps1"
+    }
+    commandLine 'cmd', '/c', "Powershell -File ${node}", '&'
+}
 task startGrid(type: Exec) {
     commandLine 'cmd', '/c', 'Powershell -File runGrid.ps1', '&'
 }
@@ -76,10 +79,6 @@ task tearDownGrid(type: Exec){
     commandLine 'cmd', '/c', 'Powershell -File tearDownGrid.ps1', '&'
 }
 
-task prin(type: Exec){
-//    systemProperty 'NODE', System.getProperties().get("NODE")
-    print('args()')
-}
 
 
 

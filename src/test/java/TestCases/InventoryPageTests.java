@@ -8,12 +8,16 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.parallel.ResourceAccessMode;
+import org.junit.jupiter.api.parallel.ResourceLock;
+import org.junit.jupiter.api.parallel.Resources;
 
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@ResourceLock(value = Resources.SYSTEM_PROPERTIES, mode = ResourceAccessMode.READ)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class InventoryPageTests extends TestBase {
 
@@ -27,7 +31,6 @@ public class InventoryPageTests extends TestBase {
     {
         LoginPage loginPage = new LoginPage(driver);
         InventoryPage inventoryPage = loginPage.navigateToPage().logInTo(User.standard_user);
-
         assertTrue(inventoryPage.checkIfAllProductImagesAreVisibility());
     }
 
