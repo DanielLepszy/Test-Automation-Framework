@@ -18,6 +18,7 @@ public class DriverFactory implements SystemPropertyReader {
 
 
     public WebDriver initSession() throws IOException {
+//        return initBrowser(chosenRunningProcess(),chosenBrowser());
         return initBrowser(chosenRunningProcess(),chosenBrowser());
     }
 

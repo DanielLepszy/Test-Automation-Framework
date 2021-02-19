@@ -2,6 +2,7 @@ package Drivers;
 
 import Readers.PropertyReader;
 import org.openqa.selenium.Platform;
+
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -10,6 +11,7 @@ public interface SystemPropertyReader extends PropertyReader {
 
     default Browser chosenBrowser() throws IOException {
         String browserType = readProperty("BROWSER").toUpperCase();
+        //TODO replace each browsers type string and set to linkedList
         List<Browser> browsers = Arrays.asList(Browser.values());
         return browsers.stream()
                 .filter(browser -> browser.name().toUpperCase(Locale.ROOT).equals(browserType)).collect(Collectors.toList()).get(0);
