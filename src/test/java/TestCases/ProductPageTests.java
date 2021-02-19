@@ -14,7 +14,6 @@ import org.junit.jupiter.api.parallel.Resources;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@ResourceLock(value = Resources.SYSTEM_PROPERTIES, mode = ResourceAccessMode.READ)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProductPageTests extends TestBase {
 

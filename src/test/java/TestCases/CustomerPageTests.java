@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@ResourceLock(value = Resources.SYSTEM_PROPERTIES, mode = ResourceAccessMode.READ)
 public class CustomerPageTests extends TestBase{
     public List<ProductModel> products = new ArrayList<>(Arrays.asList(
             new ProductModel("Sauce Labs Backpack", 29.99),

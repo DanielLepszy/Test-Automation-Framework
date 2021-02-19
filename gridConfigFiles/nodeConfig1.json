@@ -1,6 +1,7 @@
 {
   "capabilities": [
     {
+     "nodeNumber":1,
      "browserName": "firefox",
      "moz:firefoxOptions": {
         "args":[],
@@ -13,6 +14,7 @@
      "seleniumProtocol":"WebDriver"
     },
     {
+     "nodeNumber":1,
      "acceptInsecureCerts": true,
      "browserName": "chrome",
      "version": "88.0",

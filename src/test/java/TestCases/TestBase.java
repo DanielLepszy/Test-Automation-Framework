@@ -3,10 +3,12 @@ package TestCases;
 import Drivers.DriverFactory;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.parallel.ResourceAccessMode;
 import org.junit.jupiter.api.parallel.ResourceLock;
 import org.junit.jupiter.api.parallel.Resources;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -18,15 +20,21 @@ import java.io.IOException;
 public abstract class TestBase {
     protected static WebDriver driver;
 
+
     @BeforeAll
     static void openBrowser() throws Exception {
         DriverFactory driverFactory = new DriverFactory();
         driver = driverFactory.initSession();
     }
 
-    @AfterAll
-    static void tearDownSession() {
-        driver.close();
+//    @AfterAll
+//    static void tearDownSession() {
+//        driver.close();
+//    }
+//
+    @AfterEach
+    void storageCleanup() {
+        ((JavascriptExecutor) driver).executeScript("window.localStorage.clear()");
     }
 
     //TODO TakeScreenShot

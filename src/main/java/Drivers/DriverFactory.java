@@ -18,7 +18,6 @@ public class DriverFactory implements SystemPropertyReader {
 
 
     public WebDriver initSession() throws IOException {
-//        return initBrowser(chosenRunningProcess(),chosenBrowser());
         return initBrowser(chosenRunningProcess(),chosenBrowser());
     }
 
@@ -69,9 +68,12 @@ public class DriverFactory implements SystemPropertyReader {
         options.setCapability(CapabilityType.PLATFORM, getPlatformFromSystem());
         options.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);
         options.setCapability(CapabilityType.VERSION, getBrowserVersionFromSystem());
+        options.setCapability("nodeNumber", getNodeNumber());
 
         return new RemoteWebDriver(new URL(readProperty("hubURL")), options);
     }
+
+
 
     private WebDriver getRemoteChromeDriver() throws IOException {
         System.setProperty("webdriver.gecko.driver", "./chromedriver.exe");
@@ -80,7 +82,7 @@ public class DriverFactory implements SystemPropertyReader {
         options.setCapability(CapabilityType.PLATFORM, getPlatformFromSystem());
         options.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
         options.setCapability(CapabilityType.VERSION, getBrowserVersionFromSystem());
-
+        options.setCapability("nodeNumber", getNodeNumber());
         return new RemoteWebDriver(new URL(readProperty("hubURL")), options);
 
     }
