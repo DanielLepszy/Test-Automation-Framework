@@ -2,6 +2,7 @@ package PageObjects;
 
 import HelperModels.IncorectCredentials;
 import HelperModels.User;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -54,6 +55,9 @@ public class LoginPage extends BasePage {
     public List<String> getInputValidationMessagesDuringWrongLoginProcess() {
         List<String> validationMessages = new ArrayList<>();
         for (IncorectCredentials credentials : IncorectCredentials.values()) {
+            wait.waitUntilVisibilityOfPresentedElement(driver, By.id(ID_InputUsername));
+            wait.waitUntilVisibilityOfPresentedElement(driver,By.id(ID_InputPassword));
+
             usernameInput.clear();
             passwordInput.clear();
 

@@ -28,6 +28,7 @@ public class LoginPageTests extends TestBase {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.navigateToPage().logInTo(User.standard_user).logoutUser();
         assertTrue(loginPage.checkIfLoginFormElementsAreDisplay());
+
     }
 
 }

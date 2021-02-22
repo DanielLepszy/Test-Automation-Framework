@@ -1,5 +1,16 @@
 plugins {
+    id 'io.qameta.allure' version '2.8.1'  // Latest Plugin Version
     id 'java'
+}
+
+allure {
+    autoconfigure = true
+    version = '2.13.8'  // Latest Allure Version
+
+    useJUnit5 {
+        version = '2.13.8' // Latest Allure Version
+    }
+
 }
 
 group 'org.example'
@@ -7,6 +18,9 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
 }
 configurations {
     localDeps
@@ -50,7 +64,12 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver
     localDeps group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '4.0.0-alpha-7'
+
+    // https://mvnrepository.com/artifact/io.qameta.allure/allure-gradle
+    implementation group: 'io.qameta.allure', name: 'allure-gradle', version: '2.8.1'
+
 }
+
 
 test {
     systemProperty 'BROWSER', project.getProperties().get("BROWSER")
@@ -82,8 +101,6 @@ task startGrid(type: Exec) {
 task tearDownGrid(type: Exec){
     commandLine 'cmd', '/c', 'Powershell -File tearDownGrid.ps1', '&'
 }
-
-
 
 
 

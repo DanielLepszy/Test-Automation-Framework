@@ -62,13 +62,16 @@ Locally, the browser version is set to the newest as a default value.
 Before running, download selenium server .jar file in desire version and place to ***gridConfigFiles*** folder.
 Currently, the project contains selenium-server-standalone-3.141.59.jar file.
 
+- #### Start the hub and nodes :
+       $ gradle startGrid
+
 - #### Start the hub distribution with specified configurations  on a virtual machine :
        $ gradle startHub
 
   To add or edit hub configurations go to ***hubCondig.json*** file.
   
 - #### Start grid nodes with configurations on a virtual machine as well :
-      $ gradle copyDependencies startNode 
+      $ gradle startNode -Dnode= { startNode1.ps1 or startNode2.ps1 } 
   All nodes configurations are placed in ***nodeConfig.json*** file.
 
 - #### Run test suite :
@@ -78,4 +81,8 @@ There is need to specify browser version in gradle parameter.
 
 Remember to match test configurations from gradle command( BROWSER / VERSION / PLATFORM ), you need specify
 node with the same configuration in ***nodeConfig.json*** file.
+
+### Allure report :
+      $ allure serve build/allure-results
+
 
