@@ -73,8 +73,12 @@ dependencies {
 
 test {
     systemProperty 'BROWSER', project.getProperties().get("BROWSER")
+    print  project.getProperties().get("BROWSER")
+    
     systemProperty 'RUNNING_TYPE', project.getProperties().get("RUNNING_TYPE")
+    print  project.getProperties().get("RUNNING_TYPE")
     systemProperty 'VERSION', project.getProperties().get("VERSION")
+
     systemProperty 'PLATFORM', project.getProperties().get("PLATFORM")
     systemProperty 'NODE_NUMBER', project.getProperties().get("NODE_NUMBER")
 
