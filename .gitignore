@@ -108,3 +108,6 @@ Temporary Items
 
 # Allure report
 *allure-results
+
+# Logs
+*tests.log
