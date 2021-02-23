@@ -6,8 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 public interface PropertyReader {
+    static Logger log = Logger.getLogger(PropertyReader.class.getName());
 
     default String readProperty(String property) {
         String fileName = "configuration.properties";
@@ -22,7 +24,7 @@ public interface PropertyReader {
         } catch (IOException e){
             e.printStackTrace();
         }
-        System.out.println("***********READ PROPERTY"+property+" ** VALUE IS: "+p.getProperty(property));
+        log.info("***********READ PROPERTY"+property+" ** VALUE IS: "+p.getProperty(property));
         return p.getProperty(property);
     }
 }
