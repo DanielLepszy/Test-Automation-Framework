@@ -95,6 +95,7 @@ public class DriverFactory implements SystemPropertyReader {
     }
 
     private WebDriver getLocalFirefoxBrowser() {
+        System.setProperty("webdriver.gecko.driver","src/main/resources/geckodriver.exe");
         WebDriverManager.firefoxdriver().setup();
 
         return new FirefoxDriver();
