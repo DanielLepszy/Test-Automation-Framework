@@ -22,7 +22,7 @@ public interface PropertyReader {
         } catch (IOException e){
             e.printStackTrace();
         }
-
+        System.out.println("***********READ PROPERTY"+property+" ** VALUE IS: "+p.getProperty(property));
         return p.getProperty(property);
     }
 }
