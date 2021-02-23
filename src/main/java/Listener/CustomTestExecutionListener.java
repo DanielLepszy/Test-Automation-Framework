@@ -12,6 +12,7 @@ public class CustomTestExecutionListener implements TestExecutionListener {
 
     @Override
     public void executionStarted(TestIdentifier testIdentifier) {
+
         log.info("Start Test: " + testIdentifier.getDisplayName());
     }
 

@@ -2,6 +2,7 @@ package TestCases;
 
 import Drivers.DriverFactory;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.PropertyConfigurator;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -23,6 +24,7 @@ public abstract class TestBase {
 
     @BeforeAll
     static void openBrowser() throws Exception {
+        PropertyConfigurator.configure("../../../log4j.properties");
         DriverFactory driverFactory = new DriverFactory();
         driver = driverFactory.initSession();
     }

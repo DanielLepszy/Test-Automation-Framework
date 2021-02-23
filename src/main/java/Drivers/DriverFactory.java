@@ -16,7 +16,6 @@ import java.net.URL;
 
 public class DriverFactory implements SystemPropertyReader {
 
-
     public WebDriver initSession() throws IOException {
         return initBrowser(RunningTypes.Local,Browser.Firefox);
 //        return initBrowser(chosenRunningProcess(),chosenBrowser());
@@ -95,8 +94,8 @@ public class DriverFactory implements SystemPropertyReader {
     }
 
     private WebDriver getLocalFirefoxBrowser() {
-        System.setProperty("webdriver.gecko.driver","src/main/resources/geckodriver.exe");
-//        WebDriverManager.firefoxdriver().setup();
+//        System.setProperty("webdriver.gecko.driver","src/main/resources/geckodriver.exe");
+        WebDriverManager.firefoxdriver().setup();
 
         return new FirefoxDriver();
     }
