@@ -107,7 +107,7 @@ Temporary Items
 .apdisk
 
 # Allure report
-*allure-results
+**/allure-results
 
 # Logs
 **.log
