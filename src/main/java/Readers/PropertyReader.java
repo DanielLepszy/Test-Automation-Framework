@@ -10,7 +10,7 @@ import java.util.Properties;
 public interface PropertyReader {
 
     default String readProperty(String property) {
-        String fileName = "configuration.properties";
+        String fileName = "src/main/resources/configuration.properties";
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(Objects.requireNonNull(classLoader.getResource(fileName)).getFile());
         FileReader reader = null;
