@@ -78,6 +78,9 @@ dependencies {
 
 
 test {
+    testLogging {
+        showStandardStreams = true
+    }
     systemProperty 'BROWSER', project.getProperties().get("BROWSER")
     print  project.getProperties().get("BROWSER")
 
@@ -110,6 +113,10 @@ task startGrid(type: Exec) {
 }
 task tearDownGrid(type: Exec){
     commandLine 'cmd', '/c', 'Powershell -File tearDownGrid.ps1', '&'
+}
+task downloadDependencies(type: Exec) {
+    configurations.testRuntime.files
+    commandLine 'echo', 'Downloaded all dependencies'
 }
 
 
