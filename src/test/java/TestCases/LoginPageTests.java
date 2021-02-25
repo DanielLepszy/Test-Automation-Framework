@@ -25,22 +25,18 @@ public class LoginPageTests extends TestBase {
     @Test
     public void loginValidationMessage()
     {
-        log.info("**** INIT LOGIN PAGE ****");
         LoginPage loginPage = new LoginPage(driver);
         loginPage.navigateToPage();
-        log.info("**** INIT ASSSERATION PAGE ****");
-        assertTrue(true);
-
-//        List<String> messages = loginPage.navigateToPage().getInputValidationMessagesDuringWrongLoginProcess();
-//        assertEquals(messages,IncorectCredentials.getValidationMessage());
+        List<String> messages = loginPage.navigateToPage().getInputValidationMessagesDuringWrongLoginProcess();
+        assertEquals(messages,IncorectCredentials.getValidationMessage());
     }
-//    @Test
-//    public void logoutUserFromTheApplicationTest()
-//    {
-//        LoginPage loginPage = new LoginPage(driver);
-//        loginPage.navigateToPage().logInTo(User.standard_user).logoutUser();
-//        assertTrue(loginPage.checkIfLoginFormElementsAreDisplay());
-//
-//    }
+    @Test
+    public void logoutUserFromTheApplicationTest()
+    {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.navigateToPage().logInTo(User.standard_user).logoutUser();
+        assertTrue(loginPage.checkIfLoginFormElementsAreDisplay());
+
+    }
 
 }

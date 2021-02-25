@@ -2,6 +2,8 @@ package TestCases;
 
 import Drivers.DriverFactory;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -20,17 +22,19 @@ import java.io.IOException;
 
 public abstract class TestBase {
     protected static WebDriver driver;
+    static Logger log = LogManager.getLogger(LoginPageTests.class);
 
     @BeforeAll
     static void openBrowser() throws Exception {
+        log.info("**** INIT SESSION DRIVER ****");
         PropertyConfigurator.configure("log4j.properties");
         DriverFactory driverFactory = new DriverFactory();
         driver = driverFactory.initSession();
     }
-//    @AfterAll
-//    static void tearDownSession() {
-//        driver.close();
-//    }
+    @AfterAll
+    static void tearDownSession() {
+        driver.close();
+    }
 //
 //    @AfterEach
 //    void storageCleanup() {
