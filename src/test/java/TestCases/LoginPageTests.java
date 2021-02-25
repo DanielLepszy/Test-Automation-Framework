@@ -25,8 +25,10 @@ public class LoginPageTests extends TestBase {
     @Test
     public void loginValidationMessage()
     {
+        log.info("**** INIT LOGIN PAGE ****");
         LoginPage loginPage = new LoginPage(driver);
         loginPage.navigateToPage();
+        log.info("**** INIT ASSSERATION PAGE ****");
         assertTrue(true);
 
 //        List<String> messages = loginPage.navigateToPage().getInputValidationMessagesDuringWrongLoginProcess();
