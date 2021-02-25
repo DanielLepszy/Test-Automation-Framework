@@ -17,8 +17,8 @@ import java.net.URL;
 public class DriverFactory implements SystemPropertyReader {
 
     public WebDriver initSession() throws IOException {
-        return initBrowser(RunningTypes.Local,Browser.Firefox);
-//        return initBrowser(chosenRunningProcess(),chosenBrowser());
+//        return initBrowser(RunningTypes.Local,Browser.Firefox);
+        return initBrowser(chosenRunningProcess(),chosenBrowser());
     }
 
     public WebDriver initBrowser(RunningTypes runningTypes, Browser browserType) throws IOException {

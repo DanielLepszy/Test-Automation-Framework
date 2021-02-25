@@ -19,34 +19,8 @@ import static org.openqa.selenium.remote.http.AddSeleniumUserAgent.USER_AGENT;
 public class UnitTests {
 
     @Test
-    public void testCollections() throws IOException {
-        URL obj = new URL("http://192.168.0.105:4444/wd/hub");
-        HttpURLConnection httpConnection = (HttpURLConnection) obj
-                .openConnection();
+    public void testCollections() {
 
-        httpConnection.setRequestMethod("GET");
-
-        httpConnection.setRequestProperty("User-Agent", USER_AGENT);
-
-        int responseCode = httpConnection.getResponseCode();
-        if (responseCode == 200) {
-
-            BufferedReader responseReader = new BufferedReader(new InputStreamReader(
-                    httpConnection.getInputStream()));
-
-            String responseLine;
-            StringBuffer response = new StringBuffer();
-
-            while ((responseLine = responseReader.readLine()) != null) {
-                response.append(responseLine + "\n");
-            }
-            responseReader.close();
-
-            // print result
-            System.out.println(response.toString());
-        }
-        assertEquals(200,responseCode);
     }
-
 }
 

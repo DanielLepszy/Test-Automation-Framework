@@ -21,23 +21,21 @@ import java.io.IOException;
 public abstract class TestBase {
     protected static WebDriver driver;
 
-
     @BeforeAll
     static void openBrowser() throws Exception {
-        PropertyConfigurator.configure("../../../log4j.properties");
+        PropertyConfigurator.configure("log4j.properties");
         DriverFactory driverFactory = new DriverFactory();
         driver = driverFactory.initSession();
     }
-
 //    @AfterAll
 //    static void tearDownSession() {
 //        driver.close();
 //    }
 //
-    @AfterEach
-    void storageCleanup() {
-        ((JavascriptExecutor) driver).executeScript("window.localStorage.clear()");
-    }
+//    @AfterEach
+//    void storageCleanup() {
+//        ((JavascriptExecutor) driver).executeScript("window.localStorage.clear()");
+//    }
 
     //TODO TakeScreenShot
     public void takeScreenShot () {
