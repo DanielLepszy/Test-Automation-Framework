@@ -7,9 +7,9 @@ allure {
     autoconfigure = true
     version = '2.13.8'  // Latest Allure Version
 
-    useJUnit5 {
-        version = '2.13.8' // Latest Allure Version
-    }
+//    useJUnit5 {
+//        version = '2.13.8' // Latest Allure Version
+//    }
 
 }
 
@@ -76,11 +76,10 @@ dependencies {
 
 }
 
-
 test {
-    testLogging {
-        showStandardStreams = true
-    }
+//    testLogging {
+//        showStandardStreams = true
+//    }
     systemProperty 'BROWSER', project.getProperties().get("BROWSER")
     print  project.getProperties().get("BROWSER")
 
