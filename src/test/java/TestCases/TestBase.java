@@ -26,7 +26,7 @@ public abstract class TestBase {
 
     @BeforeAll
     static void openBrowser() throws Exception {
-        log.info("**** INIT SESSION DRIVER ****");
+        log.info("**** INIT SESSION DRIVER *****");
         PropertyConfigurator.configure("log4j.properties");
         DriverFactory driverFactory = new DriverFactory();
         driver = driverFactory.initSession();
