@@ -20,7 +20,7 @@ public class UnitTests {
 
     @Test
     public void testCollections() {
+        assertTrue(true);
 
     }
 }
-

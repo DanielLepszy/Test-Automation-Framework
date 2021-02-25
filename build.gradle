@@ -78,18 +78,17 @@ test {
 //    testLogging {
 //        showStandardStreams = true
 //    }
-
     def props = new Properties()
     file("configuration.properties").withInputStream { props.load(it) }
 
     systemProperty 'BROWSER', props.get("BROWSER")
     systemProperty 'RUNNING_TYPE', props.get("RUNNING_TYPE")
     systemProperty 'VERSION', props.get("VERSION")
-
     systemProperty 'PLATFORM', props.get("PLATFORM")
     systemProperty 'NODE_NUMBER', props.get("NODE_NUMBER")
 
     useJUnitPlatform()
+    include '**/TestCases/*'
 }
 
 task copyDependencies(type: Copy) {
