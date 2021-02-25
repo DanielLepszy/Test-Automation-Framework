@@ -110,4 +110,4 @@ Temporary Items
 **/allure-results
 
 # Logs
-**.log
+**/.log
