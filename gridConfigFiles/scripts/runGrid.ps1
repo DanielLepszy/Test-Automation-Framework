@@ -30,7 +30,7 @@ Write-Host ""
 
 $Url='http://localhost:4444/'
 
-start powershell  "./startHub.ps1"
+start powershell  "gridConfigFiles/scripts/startHub.ps1"
 
 Foreach ($i in 1, 2, 3, 4)
 {
@@ -39,8 +39,8 @@ Foreach ($i in 1, 2, 3, 4)
     # if requestStatus != 200 then wait until hub will create
     if($response.statusCode -eq 200)
     {
-        start powershell ./startNode1.ps1
-        start powershell ./startNode2.ps1
+        start powershell ./gridConfigFiles/scripts/startNode1.ps1
+        start powershell ./gridConfigFiles/scripts/startNode2.ps1
         break
     }
     else {

@@ -9,6 +9,6 @@ Write-Host "*"
 Write-Host "*********************************************"
 Write-Host ""
 
-$jarfile='griDConfigFiles/selenium-server-standalone-3.141.59.jar'
-java -jar $jarfile -role hub -hubConfig griDConfigFiles/hubConfig.json -debug
+$jarfile='gridConfigFiles/selenium-server-standalone-3.141.59.jar'
+java -jar $jarfile -role hub -hubConfig gridConfigFiles/hubConfig.json -debug
 

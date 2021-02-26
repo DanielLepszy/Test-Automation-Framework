@@ -60,9 +60,6 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver
     localDeps group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '4.0.0-alpha-7'
-//
-//    // https://mvnrepository.com/artifact/io.qameta.allure/allure-gradle
-//    implementation group: 'io.qameta.allure', name: 'allure-gradle', version: '2.8.1'
 
     // https://mvnrepository.com/artifact/io.qameta.allure/allure-junit5
     testImplementation group: 'io.qameta.allure', name: 'allure-junit5', version: '2.13.8'
@@ -76,9 +73,6 @@ dependencies {
 }
 
 test {
-//    testLogging {
-//        showStandardStreams = true
-//    }
     def props = new Properties()
     file("configuration.properties").withInputStream { props.load(it) }
 
@@ -91,32 +85,35 @@ test {
     useJUnitPlatform()
     include '**/TestCases/*'
 }
+// - - - Selenium Grid Configurations - - -
+
+def scriptsDir = "gridConfigFiles/scripts"
 
 task copyDependencies(type: Copy) {
     from configurations.localDeps
     into "$rootDir/gridConfigFiles"
 }
+
 task startHub(type: Exec) {
-    commandLine 'cmd', '/c', 'Powershell -File startHub.ps1', '&'
+    commandLine 'cmd', '/c', "Powershell -File  ${scriptsDir}/startHub.ps1", '&'
 }
 
 task startNode(type: Exec) {
     if (!project.hasProperty("node")) {
-        ext.node = "startNode1.ps1"
+        ext.node = "${scriptsDir}/startNode1.ps1"
     }
-    commandLine 'cmd', '/c', "Powershell -File ${node}", '&'
+    commandLine 'cmd', '/c', "Powershell -File ${scriptsDir}/${node}", '&'
 }
 task startGrid(type: Exec) {
-    commandLine 'cmd', '/c', 'Powershell -File runGrid.ps1', '&'
+    commandLine 'cmd', '/c', "Powershell -File ${scriptsDir}/runGrid.ps1", '&'
 }
 task tearDownGrid(type: Exec){
-    commandLine 'cmd', '/c', 'Powershell -File tearDownGrid.ps1', '&'
+    commandLine 'cmd', '/c', "Powershell -File ${scriptsDir}/tearDownGrid.ps1", '&'
 }
 task downloadDependencies(type: Exec) {
     configurations.testRuntime.files
     commandLine 'echo', 'Downloaded all dependencies'
 }
-
 
 
 
